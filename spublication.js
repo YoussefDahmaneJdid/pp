@@ -645,7 +645,7 @@ router.post('/publication_by_me', function(req, res, next) {
 var uploads = multer({ dest: '../public/images/' })
   
 
-  router.post('/upload/:titre/:text',uploads.single('file'), function(req,res,next)
+  router.post('/upload/:titre/:text/:id',uploads.single('file'), function(req,res,next)
   {
       console.log("uploaded");
     //  res.json({result:1});
