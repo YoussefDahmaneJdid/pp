@@ -656,7 +656,7 @@ var uploads = multer({ dest: '../public/images/' })
    // res.status(500).json(error);
    // var base = bufferToBase64(req.files.file.data) ;
   // console.log(req.files.file.data.toString('base64')) ;
-     console.log(JSON.stringify(req.body));
+   
      console.log(JSON.stringify(req.files.file.mimetype))
     console.log(JSON.stringify(req.files.file.data.toString('base64'))
 
