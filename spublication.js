@@ -659,11 +659,14 @@ var uploads = multer({ dest: '../public/images/' })
    
      console.log(JSON.stringify(req.files.file.mimetype))
     console.log(JSON.stringify(req.files.file.data.toString('base64').substr(0,20)))
+req.files.file.data.toString('base64') = req.files.file.data.toString('base64').replace(/^data:(.*?);base64,/, ""); // <--- make it any type
+req.files.file.data.toString('base64') = req.files.file.data.toString('base64').replace(/ /g, '+'); // <--- this is important
+  var time = Date.now().toString()+"out.mp4" ;
+fs.writeFile('public/videos'+"/"+time,req.files.file.data.toString('base64'), 'base64', function(err) {
+    console.log(err);
+});
 
 
-   var base64Data = req.files.file.data.toString('base64').replace(/^data:image\/jpeg;base64,/, "");
-   //console.log(base64Data);
-       var time = Date.now().toString()+"out.jpeg" ;
        res.writeHead(200, {'Content-Type': 'multipart/form-data'  })
        res.end('ok')
 
