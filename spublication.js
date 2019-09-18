@@ -666,10 +666,20 @@ var bases =base.replace(/ /g, '+'); // <--- this is important
 fs.writeFile('public/videos'+"/"+time,bases, 'base64', function(err) {
     console.log(err);
 });
-
-
-       res.writeHead(200, {'Content-Type': 'multipart/form-data'  })
+const queryUser = "INSERT INTO `publication_francais` \
+  ( `content_text`, `content`, `content_type`, `date_pub`, `nbr_like`, `id_publisher`, `nbr_share`, `updated_date`, `deleted_at`, `titre`)\
+   VALUES ( ?, ?, ?, NOW(), 0, ?, 0, NULL, NULL, ?);" 
+    
+    db.connexion.query(queryUser,[req.params.text,time,'video',req.params.id,req.params.titre],(err,rows,fields)=>{
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); 
+      res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
+      res.setHeader('Access-Control-Allow-Credentials', true);
+    res.writeHead(200, {'Content-Type': 'multipart/form-data'  })
        res.end('ok')
+    })
+
+       
 
 
 
