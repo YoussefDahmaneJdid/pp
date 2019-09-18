@@ -17,7 +17,7 @@ var cors = require('cors');
 
 
 
-var pubTest = require('./route/spublication');
+var pubTest = require('./routes/spublication');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
