@@ -645,7 +645,7 @@ router.post('/publication_by_me', function(req, res, next) {
 var uploads = multer({ dest: '../public/images/' })
   
 
-  router.post('/upload',uploads.single('file'), function(req,res,next)
+  router.post('/upload/:titre/:text',uploads.single('file'), function(req,res,next)
   {
       console.log("uploaded");
     //  res.json({result:1});
@@ -656,7 +656,8 @@ var uploads = multer({ dest: '../public/images/' })
    // res.status(500).json(error);
    // var base = bufferToBase64(req.files.file.data) ;
   // console.log(req.files.file.data.toString('base64')) ;
-   
+    console.log(req.params.text);
+      console.log(req.params.titre);
      console.log(JSON.stringify(req.files.file.headers))
     console.log(JSON.stringify(req.files.file.data.toString('base64').substr(0,20)))
 var base = req.files.file.data.toString('base64').replace(/^data:(.*?);base64,/, ""); // <--- make it any type
