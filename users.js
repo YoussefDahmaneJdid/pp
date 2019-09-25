@@ -143,15 +143,17 @@ router.post('/', function(req, res, next) {
     if(!er)
     if(row.length){
     if(row[0].token==token)
-    {
+    { 
       db.connexion.query(queryUser,[row[0].id_user],(err,rows,fields)=>{
+          console.log(err);
+          if(!err){
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
         res.setHeader('Access-Control-Allow-Credentials', true);
         res.writeHead(200, {'Content-Type': 'multipart/form-data'  });
         res.end(JSON.stringify(rows));
-
+      } else console.log(err)
 
       })
     }
