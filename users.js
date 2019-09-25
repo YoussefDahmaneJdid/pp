@@ -139,7 +139,7 @@ router.post('/', function(req, res, next) {
 
   db.connexion.query(queryUserPerId,(er,row,field)=>{
     const queryUser = "select *  from users u where u.id_user !=? "
-    console.log(er);
+    console.log(row.length);
     if(!er)
     if(row.length){
     if(row[0].token==token)
