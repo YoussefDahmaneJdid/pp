@@ -16,8 +16,7 @@ en+"' and u.id_user = t.id_user       "
 
   db.connexion.query(queryUserPerId,(er,row,field)=>{
     console.log(row);
-    const queryUser = "insert into demande_numero (user_to , user_from , demande
-ur) values (? , ? , ?)"
+    const queryUser = "insert into demande_numero (user_to , user_from , demandeur) values (? , ? , ?)"
     if(!er)
     if(row.length){
     if(row[0].token==token)
