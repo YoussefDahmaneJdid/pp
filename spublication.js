@@ -809,6 +809,43 @@ db.connexion.query(queryUserPerId,(er,row,field)=>{
 
   }) 
 
+
+ router.post('/getfilepdf',upload.single('file'),function(req, res,next) {
+              
+           console.log(JSON.stringify(req.files.file));
+               console.log('/////////////////////////////////');
+              console.log(JSON.stringify(req.body));
+              console.log('/////////////////////////////////');
+             // console.log(JSON.stringify(req.params))
+              console.log('/////////////////////////////////');
+            //  console.log(req.files.image.data.toString('hex'));
+            console.log(JSON.stringify(req.body));
+         /*    let title ;
+              if(!req.body.title){
+                if(req.files.image){
+                var base64Data = req.files.image.data.toString('base64').replace(/^data:image\/jpeg;base64,/, "");
+                //console.log(base64Data);
+                      var time = Date.now().toString()+"out.jpeg" ;
+            
+                     fs.writeFile('public/images'+"/"+time, base64Data, 'base64', function(err) {
+                                  console.log(err +' §§§§§§§§§§§'  ); 
+                                              }); 
+              }}
+          //  
+                   if(req.body.title){
+                        title = req.body.title ;
+                   }  */
+
+              res.setHeader('Access-Control-Allow-Origin', '*');
+              res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); 
+              res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
+              res.setHeader('Access-Control-Allow-Credentials', true);
+              res.writeHead(200, {'Content-Type': 'multipart/form-data'  })
+            
+              res.end('ok') 
+            });
+
+
   
 
 
